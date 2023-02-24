@@ -35,6 +35,10 @@
             this.calculateTotal = new System.Windows.Forms.Button();
             this.amountInput = new System.Windows.Forms.TextBox();
             this.calculateChangeBtn = new System.Windows.Forms.Button();
+            this.printReceiptBtn = new System.Windows.Forms.Button();
+
+            this.payInputLabel = new System.Windows.Forms.Label();
+            this.changeLabel = new System.Windows.Forms.Label();
 
             this.frenchFryLabel = new System.Windows.Forms.Label();
             this.cheeseBurgerLabel = new System.Windows.Forms.Label();
@@ -61,6 +65,13 @@
             this.calcOutputLabel.Size = new System.Drawing.Size(35, 13);
             this.calcOutputLabel.TabIndex = 0;
             this.calcOutputLabel.Text = "";
+
+            this.changeLabel.AutoSize = true;
+            this.changeLabel.Location = new System.Drawing.Point(50, 270);
+            this.changeLabel.Name = "changeLabel";
+            this.changeLabel.Size = new System.Drawing.Size(35, 13);
+            this.changeLabel.TabIndex = 0;
+            this.changeLabel.Text = "";
 
             // Item labels
             this.frenchFryLabel.AutoSize = true;
@@ -101,7 +112,7 @@
             this.waterInput.TabIndex = 2;
 
             // 
-            // "Main" (calculate) button
+            // Calculate total button
             // 
             this.calculateTotal.Location = new System.Drawing.Point(50, 155);
             this.calculateTotal.Name = "calculateTotal";
@@ -110,10 +121,32 @@
             this.calculateTotal.Text = "Calculate total";
             this.calculateTotal.UseVisualStyleBackColor = true;
             this.calculateTotal.Click += new System.EventHandler(this.calculateTotal_Click);
+            //
+            // Calculate change button
+            //
+            this.calculateChangeBtn.Location = new System.Drawing.Point(50, 245);
+            this.calculateChangeBtn.Name = "calculateChangeBtn";
+            this.calculateChangeBtn.Size = new System.Drawing.Size(75, 23);
+            this.calculateChangeBtn.TabIndex = 1;
+            this.calculateChangeBtn.Text = "Calculate change";
+            this.calculateChangeBtn.UseVisualStyleBackColor = true;
+            this.calculateChangeBtn.Click += new System.EventHandler(this.calculateChange_Click);
+
+            //
+            // Print receipt button
+            //
+            this.printReceiptBtn.Location = new System.Drawing.Point(50, 300);
+            this.printReceiptBtn.Name = "printReceiptBtn";
+            this.printReceiptBtn.Size = new System.Drawing.Size(75, 23);
+            this.printReceiptBtn.TabIndex = 1;
+            this.printReceiptBtn.Text = "";
+            this.printReceiptBtn.UseVisualStyleBackColor= true;
+            this.printReceiptBtn.Click += new System.EventHandler(this.printReceipt);
+            
             // 
             // Input amount
             // 
-            this.amountInput.Location = new System.Drawing.Point(22, 225);
+            this.amountInput.Location = new System.Drawing.Point(50, 220);
             this.amountInput.Name = "amountInput";
             this.amountInput.Size = new System.Drawing.Size(100, 20);
             this.amountInput.TabIndex = 2;
@@ -127,6 +160,8 @@
             this.Controls.Add(this.calculateTotal);
             this.Controls.Add(this.title);
             this.Controls.Add(this.calcOutputLabel);
+            this.Controls.Add(this.changeLabel);
+            //this.Controls.Add(this.calculateChangeBtn);
 
             // Add item labels
             this.Controls.Add(this.frenchFryLabel);
@@ -138,8 +173,8 @@
             this.Controls.Add(this.cheeseBurgerInput);
             this.Controls.Add(this.waterInput);
 
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "CashRegister";
+            this.Text = "Cash Register";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -149,6 +184,7 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Button calculateTotal;
         private System.Windows.Forms.Button calculateChangeBtn;
+        private System.Windows.Forms.Button printReceiptBtn;
         private System.Windows.Forms.TextBox amountInput;
         private System.Windows.Forms.TextBox fryInput;
         private System.Windows.Forms.TextBox cheeseBurgerInput;
@@ -157,6 +193,9 @@
         private System.Windows.Forms.Label cheeseBurgerLabel;
         private System.Windows.Forms.Label waterLabel;
         private System.Windows.Forms.Label calcOutputLabel;
+        private System.Windows.Forms.Label payInputLabel;
+        private System.Windows.Forms.Label changeLabel;
+        private System.Windows.Forms.Label receiptText;
     }
 }
 

@@ -61,10 +61,12 @@ namespace cashRegister
             System.Console.WriteLine($"Amount: {amount}");
             AMOUNT = amount;
             TAX_AMOUNT = tax_amount;
-            this.calcOutputLabel.Text = $"Total amount: {AMOUNT}";
+            this.calcOutputLabel.Text = $"Total amount: {AMOUNT}\nTax amount:  {TAX_AMOUNT}";
+
+            this.Controls.Add(this.calculateChangeBtn);
         }
 
-        private void calculateChange(object _, EventArgs e)
+        private void calculateChange_Click(object _, EventArgs e)
         {
             try
             {
@@ -72,9 +74,19 @@ namespace cashRegister
             }
             catch
             {
-                this.Controls.Remove(this.amountInput);
+                System.Console.WriteLine($"{this.amountInput.Text}");
                 throw;
             }
+
+            double change = PAID_AMOUNT - AMOUNT;
+            
+            if (change < 0)
+            {
+                this.changeLabel.Text = $"Did not enter enough money, still need {(change * -1).ToString("C")}";
+                return;
+            }
+
+            this.changeLabel.Text = $" ";
         }
     }
 }
