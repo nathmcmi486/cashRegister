@@ -37,6 +37,7 @@ namespace cashRegister
             this.amountInput = new System.Windows.Forms.TextBox();
             this.calculateChangeBtn = new System.Windows.Forms.Button();
             this.printReceiptBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
 
             this.payInputLabel = new System.Windows.Forms.Label();
             this.changeLabel = new System.Windows.Forms.Label();
@@ -152,13 +153,13 @@ namespace cashRegister
             this.printReceiptBtn.Click += new System.EventHandler(this.printReceipt);
 
 
-            this.resetBtn.Location = new System.Drawing.Point(50, 300);
-            this.resetBtn.Name = "printReceiptBtn";
+            this.resetBtn.Location = new System.Drawing.Point(50, 340);
+            this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(75, 23);
             this.resetBtn.TabIndex = 1;
-            this.resetBtn.Text = "Print Receipt";
+            this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = true;
-            this.resetBtn.Click += new System.EventHandler(this.printReceipt);
+            this.resetBtn.Click += new System.EventHandler(this.Reset);
 
             // 
             // Input amount
@@ -179,6 +180,7 @@ namespace cashRegister
             this.Controls.Add(this.calcOutputLabel);
             this.Controls.Add(this.changeLabel);
             this.Controls.Add(this.receiptText);
+            // this.Controls.Add(this.resetButton);
             this.BackColor = System.Drawing.Color.DarkGray;
             //this.Controls.Add(this.calculateChangeBtn);
 
@@ -205,6 +207,7 @@ namespace cashRegister
         private System.Windows.Forms.Button calculateChangeBtn;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button printReceiptBtn;
+        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.TextBox amountInput;
         private System.Windows.Forms.TextBox fryInput;
         private System.Windows.Forms.TextBox cheeseBurgerInput;
