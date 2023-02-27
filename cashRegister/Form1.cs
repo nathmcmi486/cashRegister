@@ -113,7 +113,6 @@ namespace cashRegister
             this.Refresh();
             System.Threading.Thread.Sleep(900);
 
-
             this.receiptText.Text += $"Cheese Burgers:   {(QUANTITY[1] * CHEESE_BURGER_COST).ToString("C")}\n";
 
             this.Refresh();
@@ -155,4 +154,15 @@ namespace cashRegister
             this.receiptText.Text += "y!";
         }
     }
+    
+        private void Reset(object_, EventArgs e)
+        {
+            AMOUNT = 0.0;
+            PAID_AMOUNT = 0.0;
+            TAX_AMOUNT = 0.0;
+            TAX_RATE = 0.0;
+            QUANTITY = {0, 0, 0};
+            this.Controls.Remove(this.printReceiptButton);
+            this.Controls.Remove(this.calculateChangeButton);
+        }
 }
