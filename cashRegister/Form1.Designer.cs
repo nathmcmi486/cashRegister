@@ -1,4 +1,4 @@
-﻿namespace cashRegister
+namespace cashRegister
 {
     partial class Form1
     {
@@ -31,6 +31,7 @@
         private void InitializeComponent()
         {
             this.title = new System.Windows.Forms.Label();
+            this.receiptText = new System.Windows.Forms.Label();
             this.calcOutputLabel = new System.Windows.Forms.Label();
             this.calculateTotal = new System.Windows.Forms.Button();
             this.amountInput = new System.Windows.Forms.TextBox();
@@ -95,6 +96,13 @@
             this.waterLabel.TabIndex = 0;
             this.waterLabel.Text = $"Water {WATER_COST.ToString("C")}";
 
+            this.receiptText.AutoSize = true;
+            this.receiptText.Location = new System.Drawing.Point(275, 90);
+            this.receiptText.Name = "receiptText";
+            this.receiptText.Size = new System.Drawing.Size(35, 13);
+            this.receiptText.TabIndex = 0;
+            this.receiptText.BackColor = System.Drawing.Color.White;
+
             // Item input boxes
             this.fryInput.Location = new System.Drawing.Point(170, 90);
             this.fryInput.Name = "fryInput";
@@ -139,10 +147,19 @@
             this.printReceiptBtn.Name = "printReceiptBtn";
             this.printReceiptBtn.Size = new System.Drawing.Size(75, 23);
             this.printReceiptBtn.TabIndex = 1;
-            this.printReceiptBtn.Text = "";
-            this.printReceiptBtn.UseVisualStyleBackColor= true;
+            this.printReceiptBtn.Text = "Print Receipt";
+            this.printReceiptBtn.UseVisualStyleBackColor = true;
             this.printReceiptBtn.Click += new System.EventHandler(this.printReceipt);
-            
+
+
+            this.resetBtn.Location = new System.Drawing.Point(50, 300);
+            this.resetBtn.Name = "printReceiptBtn";
+            this.resetBtn.Size = new System.Drawing.Size(75, 23);
+            this.resetBtn.TabIndex = 1;
+            this.resetBtn.Text = "Print Receipt";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.printReceipt);
+
             // 
             // Input amount
             // 
@@ -161,6 +178,8 @@
             this.Controls.Add(this.title);
             this.Controls.Add(this.calcOutputLabel);
             this.Controls.Add(this.changeLabel);
+            this.Controls.Add(this.receiptText);
+            this.BackColor = System.Drawing.Color.DarkGray;
             //this.Controls.Add(this.calculateChangeBtn);
 
             // Add item labels
@@ -184,6 +203,7 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Button calculateTotal;
         private System.Windows.Forms.Button calculateChangeBtn;
+        private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button printReceiptBtn;
         private System.Windows.Forms.TextBox amountInput;
         private System.Windows.Forms.TextBox fryInput;
