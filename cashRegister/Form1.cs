@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,12 +23,13 @@ namespace cashRegister
          * Index 2 - Water
         */
         public static uint[] QUANTITY = {0, 0, 0};
-        // 
+        // Amounts paid
         private static double AMOUNT = 0.0;
         private static double PAID_AMOUNT = 0.0;
         private static double TAX_AMOUNT = 0.0;
         public const double TAX_RATE = 0.13;
-        
+
+        private static string RECEIPT_TEXT = "";
 
         public Form1()
         {
@@ -61,7 +62,7 @@ namespace cashRegister
             System.Console.WriteLine($"Amount: {amount}");
             AMOUNT = amount;
             TAX_AMOUNT = tax_amount;
-            this.calcOutputLabel.Text = $"Total amount: {AMOUNT}\nTax amount:  {TAX_AMOUNT}";
+            this.calcOutputLabel.Text = $"Total amount: {AMOUNT.ToString("C")}\nTax amount:  {TAX_AMOUNT.ToString("C")}";
 
             this.Controls.Add(this.calculateChangeBtn);
         }
@@ -86,7 +87,72 @@ namespace cashRegister
                 return;
             }
 
-            this.changeLabel.Text = $" ";
+            this.changeLabel.Text = $"Change is: {change.ToString("C")}";
+            // this.Controls.Add(this.receiptText);
+            this.Controls.Add(this.printReceiptBtn);
+        }
+
+        private async void printReceipt(object _, EventArgs e)
+        {
+            this.ClientSize = new System.Drawing.Size(600, 450);
+
+            // Display the texts at different times so it seems "realistic"
+
+            this.receiptText.Text += "----------- The Store -----------\n\nOrder";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(120);
+
+            this.receiptText.Text += "ed:\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(750);
+
+            this.receiptText.Text += $"{QUANTITY[0]} French Fries:         {(QUANTITY[0] * FRENCH_FRY_COST).ToString("C")}\n{QUANTITY[1]} ";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(900);
+
+
+            this.receiptText.Text += $"Cheese Burgers:   {(QUANTITY[1] * CHEESE_BURGER_COST).ToString("C")}\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(300);
+
+            this.receiptText.Text += $"{QUANTITY[2]} Waters                  {(QUANTITY[2] * WATER_COST).ToString("C")}\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(50);
+
+            this.receiptText.Text += "\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(1000);
+
+            this.receiptText.Text += $"Total:                       {(AMOUNT - TAX_AMOUNT).ToString("C")}\n";
+            this.receiptText.Text += $"Tax:                         {TAX_AMOUNT.ToString("C")}\n";
+            this.receiptText.Text += $"Total w/ Tax:           {AMOUNT.ToString("C")}\n\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(1000);
+
+            this.receiptText.Text += $"Paid with:                 {PAID_AMOUNT.ToString("C")}\n";
+            this.receiptText.Text += $"Change:                   {(PAID_AMOUNT - AMOUNT).ToString("C")}\n";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(120);
+
+            this.receiptText.Text += "\nHave a";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(120);
+
+            this.receiptText.Text += " good da";
+
+            this.Refresh();
+            System.Threading.Thread.Sleep(85);
+
+            this.receiptText.Text += "y!";
         }
     }
 }
