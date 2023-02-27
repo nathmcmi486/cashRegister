@@ -113,7 +113,6 @@ namespace cashRegister
             this.Refresh();
             System.Threading.Thread.Sleep(900);
 
-
             this.receiptText.Text += $"Cheese Burgers:   {(QUANTITY[1] * CHEESE_BURGER_COST).ToString("C")}\n";
 
             this.Refresh();
@@ -153,6 +152,24 @@ namespace cashRegister
             System.Threading.Thread.Sleep(85);
 
             this.receiptText.Text += "y!";
+
+            this.Controls.Add(this.resetBtn);
+        }
+
+        private void Reset(object _, EventArgs e)
+        {
+            // Set everything to 0, remove buttons and labels
+            AMOUNT = 0.0;
+            PAID_AMOUNT = 0.0;
+            TAX_AMOUNT = 0.0;
+            QUANTITY[0] = 0;
+            QUANTITY[1] = 0;
+            QUANTITY[2] = 0;
+            this.Controls.Remove(this.printReceiptBtn);
+            this.Controls.Remove(this.receiptText);
+            this.changeLabel.Text = "";
+            this.Controls.Remove(this.calculateChangeBtn);
+            this.Controls.Remove(this.resetBtn);
         }
     }
 }
