@@ -172,4 +172,15 @@ namespace cashRegister
             this.Controls.Remove(this.resetBtn);
         }
     }
+    
+        private void Reset(object_, EventArgs e)
+        {
+            AMOUNT = 0.0;
+            PAID_AMOUNT = 0.0;
+            TAX_AMOUNT = 0.0;
+            TAX_RATE = 0.0;
+            QUANTITY = {0, 0, 0};
+            this.Controls.Remove(this.printReceiptButton);
+            this.Controls.Remove(this.calculateChangeButton);
+        }
 }
